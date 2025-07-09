@@ -4,6 +4,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.nitu.httydmod.block.ModBlocks;
+import net.nitu.httydmod.item.ModCreativeModTabs;
 import net.nitu.httydmod.item.ModItems;
 import org.slf4j.Logger;
 
@@ -53,6 +54,8 @@ public class HttydMod {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModCreativeModTabs.register(modEventBus);
+
         ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
