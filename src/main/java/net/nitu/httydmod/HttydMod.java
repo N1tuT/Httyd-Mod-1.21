@@ -1,9 +1,12 @@
 package net.nitu.httydmod;
 
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.nitu.httydmod.block.ModBlocks;
+import net.nitu.httydmod.entity.ModEntities;
+import net.nitu.httydmod.entity.client.HobgoblinRenderer;
 import net.nitu.httydmod.item.ModCreativeModTabs;
 import net.nitu.httydmod.item.ModItems;
 import org.slf4j.Logger;
@@ -58,6 +61,8 @@ public class HttydMod {
 
         ModBlocks.register(modEventBus);
 
+        ModEntities.register(modEventBus);
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
@@ -74,5 +79,13 @@ public class HttydMod {
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+    }
+
+    @EventBusSubscriber(modid = HttydMod.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.HOBGOBLIN.get(), HobgoblinRenderer::new);
+        }
     }
 }
