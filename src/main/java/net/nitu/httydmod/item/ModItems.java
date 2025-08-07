@@ -14,8 +14,8 @@ public class ModItems {
     public static final DeferredItem<Item> NIGHT_FURY_SCALE = ITEMS.register("night_fury_scale",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> HOBGOBLIN_SPAWN_EGG = ITEMS.register("hobgoblin_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.HOBGOBLIN, 0x320553, 0x87974e,
+    public static final DeferredItem<Item> HOBGOBBLER_SPAWN_EGG = ITEMS.register("hobgobbler_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.HOBGOBBLER, 0x320553, 0x87974e,
                     new Item.Properties()));
 
     public static void register(IEventBus eventBus) {

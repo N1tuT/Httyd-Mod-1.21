@@ -5,8 +5,8 @@ import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
-public class HobgoblinAnimations {
-    public static final AnimationDefinition ANIM_HOBGOBLIN_IDLE = AnimationDefinition.Builder.withLength(2f).looping()
+public class HobgobblerAnimations {
+    public static final AnimationDefinition ANIM_HOBGOBBLER_IDLE = AnimationDefinition.Builder.withLength(2f).looping()
             .addAnimation("tail",
                     new AnimationChannel(AnimationChannel.Targets.POSITION,
                             new Keyframe(0f, KeyframeAnimations.posVec(0f, 0f, 0f),
@@ -104,7 +104,7 @@ public class HobgoblinAnimations {
                             new Keyframe(0f, KeyframeAnimations.scaleVec(1f, 1f, 1f),
                                     AnimationChannel.Interpolations.LINEAR))).build();
 
-    public static final AnimationDefinition ANIM_HOBGOBLIN_WALK = AnimationDefinition.Builder.withLength(1f).looping()
+    public static final AnimationDefinition ANIM_HOBGOBBLER_WALK = AnimationDefinition.Builder.withLength(1f).looping()
             .addAnimation("tail",
                     new AnimationChannel(AnimationChannel.Targets.POSITION,
                             new Keyframe(0f, KeyframeAnimations.posVec(0f, 0f, 0f),

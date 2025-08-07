@@ -10,16 +10,16 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.nitu.httydmod.HttydMod;
-import net.nitu.httydmod.entity.custom.HobgoblinEntity;
+import net.nitu.httydmod.entity.custom.HobgobblerEntity;
 
-public class HobgoblinModel<T extends HobgoblinEntity> extends HierarchicalModel<T> {
+public class HobgobblerModel<T extends HobgobblerEntity> extends HierarchicalModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION =
             new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "hobgoblin"), "main");
 
     private final ModelPart body;
     private final ModelPart head;
 
-    public HobgoblinModel(ModelPart root) {
+    public HobgobblerModel(ModelPart root) {
         this.body = root.getChild("body");
         this.head = this.body.getChild("head");
     }
@@ -130,12 +130,12 @@ public class HobgoblinModel<T extends HobgoblinEntity> extends HierarchicalModel
     }
 
     @Override
-    public void setupAnim(HobgoblinEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(HobgobblerEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch);
 
-        this.animateWalk(HobgoblinAnimations.ANIM_HOBGOBLIN_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
-        this.animate(entity.idleAnimationState, HobgoblinAnimations.ANIM_HOBGOBLIN_IDLE, ageInTicks, 1f);
+        this.animateWalk(HobgobblerAnimations.ANIM_HOBGOBBLER_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
+        this.animate(entity.idleAnimationState, HobgobblerAnimations.ANIM_HOBGOBBLER_IDLE, ageInTicks, 1f);
     }
 
 

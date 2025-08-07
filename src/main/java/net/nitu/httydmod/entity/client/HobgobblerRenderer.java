@@ -8,35 +8,34 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.nitu.httydmod.HttydMod;
-import net.nitu.httydmod.entity.HobgoblinVariant;
-import net.nitu.httydmod.entity.custom.HobgoblinEntity;
+import net.nitu.httydmod.entity.custom.HobgobblerVariant;
+import net.nitu.httydmod.entity.custom.HobgobblerEntity;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.Map;
 
-public class HobgoblinRenderer extends MobRenderer<HobgoblinEntity, HobgoblinModel<HobgoblinEntity>> {
-    private static final Map<HobgoblinVariant, ResourceLocation> LOCATION_BY_VARIANT =
-            Util.make(Maps.newEnumMap(HobgoblinVariant.class), map -> {
-                map.put(HobgoblinVariant.PURPLE,
+public class HobgobblerRenderer extends MobRenderer<HobgobblerEntity, HobgobblerModel<HobgobblerEntity>> {
+    private static final Map<HobgobblerVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(HobgobblerVariant.class), map -> {
+                map.put(HobgobblerVariant.PURPLE,
                         ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/hobgoblin/hobgoblin_purple.png"));
-                map.put(HobgoblinVariant.BLUE,
+                map.put(HobgobblerVariant.BLUE,
                         ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/hobgoblin/hobgoblin_blue.png"));
 
             });
 
 
 
-    public HobgoblinRenderer(EntityRendererProvider.Context context) {
-        super(context, new HobgoblinModel<>(context.bakeLayer(HobgoblinModel.LAYER_LOCATION)),0.25f);
+    public HobgobblerRenderer(EntityRendererProvider.Context context) {
+        super(context, new HobgobblerModel<>(context.bakeLayer(HobgobblerModel.LAYER_LOCATION)),0.25f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(HobgoblinEntity hobgoblinEntity) {
-        return LOCATION_BY_VARIANT.get(hobgoblinEntity.getVariant());
+    public ResourceLocation getTextureLocation(HobgobblerEntity hobgobblerEntity) {
+        return LOCATION_BY_VARIANT.get(hobgobblerEntity.getVariant());
     }
 
     @Override
-    public void render(HobgoblinEntity entity, float entityYaw, float partialTicks,
+    public void render(HobgobblerEntity entity, float entityYaw, float partialTicks,
                        PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 
         LOCATION_BY_VARIANT.get(entity.getVariant());

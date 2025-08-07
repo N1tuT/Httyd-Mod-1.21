@@ -6,7 +6,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.nitu.httydmod.HttydMod;
-import net.nitu.httydmod.entity.custom.HobgoblinEntity;
+import net.nitu.httydmod.entity.custom.HobgobblerEntity;
 
 import java.util.function.Supplier;
 
@@ -14,8 +14,8 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, HttydMod.MODID);
 
-    public static final Supplier<EntityType<HobgoblinEntity>> HOBGOBLIN =
-            ENTITY_TYPES.register("hobgoblin", () -> EntityType.Builder.of(HobgoblinEntity::new, MobCategory.CREATURE)
+    public static final Supplier<EntityType<HobgobblerEntity>> HOBGOBBLER =
+            ENTITY_TYPES.register("hobgoblin", () -> EntityType.Builder.of(HobgobblerEntity::new, MobCategory.CREATURE)
                     .sized(0.8f,0.8f).build("hobgoblin"));
 
 

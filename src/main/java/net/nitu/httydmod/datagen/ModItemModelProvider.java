@@ -15,6 +15,6 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem((ModItems.NIGHT_FURY_SCALE.get()));
 
-        withExistingParent(ModItems.HOBGOBLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.HOBGOBBLER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 }
