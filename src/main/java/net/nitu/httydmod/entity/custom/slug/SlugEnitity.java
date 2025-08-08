@@ -1,11 +1,14 @@
 package net.nitu.httydmod.entity.custom.slug;
 
 import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -16,16 +19,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.nitu.httydmod.entity.ModEntities;
-import net.nitu.httydmod.entity.custom.hobgobbler.HobgobblerEntity;
-import net.nitu.httydmod.entity.custom.hobgobbler.HobgobblerVariant;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
 public class SlugEnitity extends Animal {
+
     private static final Set<Item> BREEDING_FOOD = Set.of(
             Items.ACACIA_LEAVES,
             Items.AZALEA_LEAVES,
@@ -52,24 +55,23 @@ public class SlugEnitity extends Animal {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 1.25));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.5));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, this::isTamingOrBreedingItem, false));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.25));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.25));
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 8.0)
+                .add(Attributes.MAX_HEALTH, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.1)
                 .add(Attributes.FOLLOW_RANGE, 24D);
     }
 
     @Override
     public boolean isFood(ItemStack itemStack) {
-        return isTamingOrBreedingItem(itemStack);
+        return false;
     }
 
     protected boolean isTamingOrBreedingItem(ItemStack stack) {
@@ -79,22 +81,7 @@ public class SlugEnitity extends Animal {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-        SlugEnitity parent2 = (SlugEnitity) otherParent;
-        SlugEnitity child = ModEntities.SLUG.get().create(level);
-        if (child != null) {
-            int i = this.random.nextInt(2);
-            SlugVariant variant;
-            if (i < 1) {
-                variant = this.getVariant();
-            } else if (i < 2) {
-                variant = parent2.getVariant();
-            } else {
-                variant = Util.getRandom(SlugVariant.values(), this.random);
-            }
-            child.setVariant(variant);
-        }
-
-        return child;
+        return null;
     }
 
     private void setupAnimationStates() {
@@ -147,4 +134,11 @@ public class SlugEnitity extends Animal {
 
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
+
+    public static boolean canSlugSpawn(EntityType<SlugEnitity> entityType, LevelAccessor level, MobSpawnType spawnType,
+                                       BlockPos pos, RandomSource random) {
+        boolean flag = true;
+        return level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && flag;
+    }
+
 }

@@ -8,6 +8,7 @@ import net.nitu.httydmod.block.ModBlocks;
 import net.nitu.httydmod.entity.ModEntities;
 import net.nitu.httydmod.entity.client.hobgobbler.HobgobblerRenderer;
 import net.nitu.httydmod.entity.client.slug.SlugRenderer;
+import net.nitu.httydmod.events.ModEventBusEvents;
 import net.nitu.httydmod.item.ModCreativeModTabs;
 import net.nitu.httydmod.item.ModItems;
 import org.slf4j.Logger;
@@ -52,6 +53,7 @@ public class HttydMod {
         modEventBus.addListener(this::addCreative);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
