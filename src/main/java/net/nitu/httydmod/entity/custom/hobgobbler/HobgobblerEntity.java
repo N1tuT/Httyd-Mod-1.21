@@ -1,4 +1,4 @@
-package net.nitu.httydmod.entity.custom;
+package net.nitu.httydmod.entity.custom.hobgobbler;
 
 import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
@@ -6,6 +6,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -17,14 +18,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.nitu.httydmod.entity.DragonEntity;
 import net.nitu.httydmod.entity.ModEntities;
+import net.nitu.httydmod.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
 public class HobgobblerEntity extends DragonEntity {
     private static final Set<Item> TAMING_FOODS = Set.of(
-            Items.SUNFLOWER,
-            Items.POPPY
+            ModItems.SLUG.asItem(),
+            Items.POPPY.asItem(),
+            Items.SUNFLOWER.asItem()
     );
 
     private static final EntityDataAccessor<Integer> VARIANT =

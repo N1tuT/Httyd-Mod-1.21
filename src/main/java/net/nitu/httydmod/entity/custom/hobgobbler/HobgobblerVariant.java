@@ -1,4 +1,4 @@
-package net.nitu.httydmod.entity.custom;
+package net.nitu.httydmod.entity.custom.hobgobbler;
 
 import java.util.Arrays;
 import java.util.Comparator;

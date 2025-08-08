@@ -19,7 +19,9 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.httydmod.httyd"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.NIGHT_FURY_SCALE);
+                        output.accept(ModItems.SLUG);
                         output.accept(ModItems.HOBGOBBLER_SPAWN_EGG);
+                        output.accept(ModItems.SLUG_SPAWN_EGG);
                     }).build());
 
     public static void register(IEventBus eventBus) {

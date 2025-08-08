@@ -1,4 +1,4 @@
-package net.nitu.httydmod.entity.client;
+package net.nitu.httydmod.entity.client.hobgobbler;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.nitu.httydmod.HttydMod;
-import net.nitu.httydmod.entity.custom.HobgobblerEntity;
+import net.nitu.httydmod.entity.custom.hobgobbler.HobgobblerEntity;
 
 public class HobgobblerModel<T extends HobgobblerEntity> extends HierarchicalModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION =

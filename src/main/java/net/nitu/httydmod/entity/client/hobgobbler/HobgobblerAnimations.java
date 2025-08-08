@@ -1,4 +1,4 @@
-package net.nitu.httydmod.entity.client;
+package net.nitu.httydmod.entity.client.hobgobbler;
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;

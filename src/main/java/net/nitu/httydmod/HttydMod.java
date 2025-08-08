@@ -6,7 +6,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.nitu.httydmod.block.ModBlocks;
 import net.nitu.httydmod.entity.ModEntities;
-import net.nitu.httydmod.entity.client.HobgobblerRenderer;
+import net.nitu.httydmod.entity.client.hobgobbler.HobgobblerRenderer;
+import net.nitu.httydmod.entity.client.slug.SlugRenderer;
 import net.nitu.httydmod.item.ModCreativeModTabs;
 import net.nitu.httydmod.item.ModItems;
 import org.slf4j.Logger;
@@ -70,6 +71,7 @@ public class HttydMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.HOBGOBBLER.get(), HobgobblerRenderer::new);
+            EntityRenderers.register(ModEntities.SLUG.get(), SlugRenderer::new);
         }
     }
 }
