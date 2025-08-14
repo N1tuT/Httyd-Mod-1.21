@@ -20,6 +20,9 @@ public class ModItems {
     public static final DeferredItem<Item> HOBGOBBLER_SPAWN_EGG = ITEMS.register("hobgobbler_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.HOBGOBBLER, 0x320553, 0x87974e,
                     new Item.Properties()));
+    public static final DeferredItem<Item> NIGHT_TERROR_SPAWN_EGG = ITEMS.register("night_terror_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.NIGHT_TERROR, 0x0e0d14, 0x2c293b,
+                    new Item.Properties()));
     public static final DeferredItem<Item> SLUG_SPAWN_EGG = ITEMS.register("slug_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.SLUG, 0x424825, 0x131c09,
                     new Item.Properties()));

@@ -5,7 +5,8 @@ import java.util.Comparator;
 
 public enum HobgobblerVariant {
     PURPLE(0),
-    BLUE(1);
+    BLUE(1),
+    RED(2);
 
 
     private static final HobgobblerVariant[] BY_ID = Arrays.stream(values()).sorted(

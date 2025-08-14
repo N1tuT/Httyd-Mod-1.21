@@ -20,6 +20,8 @@ public class HobgobblerRenderer extends MobRenderer<HobgobblerEntity, Hobgobbler
                         ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/hobgobbler/hobgobbler_purple.png"));
                 map.put(HobgobblerVariant.BLUE,
                         ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/hobgobbler/hobgobbler_blue.png"));
+                map.put(HobgobblerVariant.RED,
+                        ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/hobgobbler/hobgobbler_red.png"));
 
             });
 

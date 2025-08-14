@@ -7,6 +7,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.nitu.httydmod.block.ModBlocks;
 import net.nitu.httydmod.entity.ModEntities;
 import net.nitu.httydmod.entity.client.hobgobbler.HobgobblerRenderer;
+import net.nitu.httydmod.entity.client.nightterror.NightTerrorRenderer;
 import net.nitu.httydmod.entity.client.slug.SlugRenderer;
 import net.nitu.httydmod.events.ModEventBusEvents;
 import net.nitu.httydmod.item.ModCreativeModTabs;
@@ -73,6 +74,7 @@ public class HttydMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.HOBGOBBLER.get(), HobgobblerRenderer::new);
+            EntityRenderers.register(ModEntities.NIGHT_TERROR.get(), NightTerrorRenderer::new);
             EntityRenderers.register(ModEntities.SLUG.get(), SlugRenderer::new);
         }
     }
