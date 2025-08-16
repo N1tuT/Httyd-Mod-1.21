@@ -8,8 +8,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.nitu.httydmod.HttydMod;
-import net.nitu.httydmod.entity.client.hobgobbler.HobgobblerModel;
-import net.nitu.httydmod.entity.custom.hobgobbler.HobgobblerVariant;
 import net.nitu.httydmod.entity.custom.nightterror.NightTerrorEntity;
 import net.nitu.httydmod.entity.custom.nightterror.NightTerrorVariant;
 
@@ -22,6 +20,10 @@ public class NightTerrorRenderer extends MobRenderer<NightTerrorEntity, NightTer
                         ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/night_terror/night_terror_black.png"));
                 map.put(NightTerrorVariant.WHITE,
                         ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/night_terror/night_terror_white.png"));
+                map.put(NightTerrorVariant.BLACK_SADDLED,
+                        ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/night_terror/night_terror_black_saddled.png"));
+                map.put(NightTerrorVariant.WHITE_SADDLED,
+                        ResourceLocation.fromNamespaceAndPath(HttydMod.MODID, "textures/entity/night_terror/night_terror_white_saddled.png"));
 
             });
 

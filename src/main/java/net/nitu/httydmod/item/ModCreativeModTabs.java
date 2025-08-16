@@ -21,6 +21,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.NIGHT_FURY_SCALE);
                         output.accept(ModItems.SLUG);
                         output.accept(ModItems.HOBGOBBLER_SPAWN_EGG);
+                        output.accept(ModItems.NIGHT_TERROR_SPAWN_EGG);
                         output.accept(ModItems.SLUG_SPAWN_EGG);
                     }).build());
 

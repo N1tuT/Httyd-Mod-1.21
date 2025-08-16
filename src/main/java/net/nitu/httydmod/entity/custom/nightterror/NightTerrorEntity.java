@@ -10,6 +10,8 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -26,10 +28,15 @@ public class NightTerrorEntity extends DragonEntity {
             Items.PUMPKIN.asItem()
     );
 
+    @Override
+    protected int getMaxDragonTemper() {
+        return 80;
+    }
+
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(NightTerrorEntity.class, EntityDataSerializers.INT);
 
-    public NightTerrorEntity(EntityType<? extends TamableAnimal> entityType, Level level) { super(entityType, level); }
+    public NightTerrorEntity(EntityType<? extends AbstractHorse> entityType, Level level) { super(entityType, level); }
 
     public static AttributeSupplier.Builder createAttributes() {
         return createBaseAttributes()
@@ -37,7 +44,7 @@ public class NightTerrorEntity extends DragonEntity {
     }
 
     @Override
-    public @Nullable AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
+    protected DragonEntity createChild(DragonEntity otherParent, ServerLevel level) {
         NightTerrorEntity parent2 = (NightTerrorEntity) otherParent;
         NightTerrorEntity child = ModEntities.NIGHT_TERROR.get().create(level);
 
@@ -58,7 +65,13 @@ public class NightTerrorEntity extends DragonEntity {
     }
 
     @Override
+    public boolean canRide(Player player) {
+        return false;
+    }
+
+    @Override
     protected boolean isTamingOrBreedingItem(ItemStack stack) { return TAMING_FOODS.contains(stack.getItem()); }
+
 
     /* VARIANT */
 
@@ -68,12 +81,13 @@ public class NightTerrorEntity extends DragonEntity {
         builder.define(VARIANT, 0);
     }
 
-    private int getTypeVariant() {
+    public int getTypeVariant() {
         return this.entityData.get(VARIANT);
     }
 
     public NightTerrorVariant getVariant() {
-        return NightTerrorVariant.byId(this.getTypeVariant() & 255);
+        int id = this.getTypeVariant();
+        return NightTerrorVariant.byId(id & 255);
     }
 
     private void setVariant(NightTerrorVariant variant) {

@@ -6,11 +6,12 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -30,10 +31,15 @@ public class HobgobblerEntity extends DragonEntity {
             Items.SUNFLOWER.asItem()
     );
 
+    @Override
+    protected int getMaxDragonTemper() {
+        return 80;
+    }
+
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(HobgobblerEntity.class, EntityDataSerializers.INT);
 
-    public HobgobblerEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
+    public HobgobblerEntity(EntityType<? extends AbstractHorse> entityType, Level level) {
         super(entityType, level);
     }
 
@@ -43,9 +49,13 @@ public class HobgobblerEntity extends DragonEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0.1D);
     }
 
-    @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
+    protected boolean isTamingOrBreedingItem(ItemStack stack) {
+        return TAMING_FOODS.contains(stack.getItem());
+    }
+
+    @Override
+    protected DragonEntity createChild(DragonEntity otherParent, ServerLevel level) {
         HobgobblerEntity parent2 = (HobgobblerEntity) otherParent;
         HobgobblerEntity child = ModEntities.HOBGOBBLER.get().create(level);
         if (child != null) {
@@ -62,12 +72,11 @@ public class HobgobblerEntity extends DragonEntity {
         }
 
         return child;
-
     }
 
     @Override
-    protected boolean isTamingOrBreedingItem(ItemStack stack) {
-        return TAMING_FOODS.contains(stack.getItem());
+    public boolean canRide(Player player) {
+        return false;
     }
 
     /* VARIANT */

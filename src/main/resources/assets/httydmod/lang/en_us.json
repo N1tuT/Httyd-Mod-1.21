@@ -2,11 +2,13 @@
   "item.httydmod.night_fury_scale": "Night Fury Scale",
   "item.httydmod.slug": "Slug",
   "item.httydmod.hobgobbler_spawn_egg": "Hobgobbler Spawn Egg",
+  "item.httydmod.night_terror_spawn_egg": "Night Terror Spawn Egg",
   "item.httydmod.slug_spawn_egg": "Slug Spawn Egg",
 
 
-  "entity.mccourse.hobgobbler": "Hobgobbler",
-  "entity.mccourse.slug": "Slug",
+  "entity.httydmod.hobgobbler": "Hobgobbler",
+  "entity.httydmod.night_terror": "Night Terror",
+  "entity.httydmod.slug": "Slug",
 
   "creativetab.httydmod.httyd": "How to Train Your Dragon"
 }

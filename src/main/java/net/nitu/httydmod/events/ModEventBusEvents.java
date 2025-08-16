@@ -9,7 +9,6 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.nitu.httydmod.HttydMod;
-import net.nitu.httydmod.entity.DragonEntity;
 import net.nitu.httydmod.entity.ModEntities;
 import net.nitu.httydmod.entity.client.hobgobbler.HobgobblerModel;
 import net.nitu.httydmod.entity.client.nightterror.NightTerrorModel;
